@@ -1,43 +1,42 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const hbs = require("hbs");
 
-app.use(express.static("public"));
+const app = express();
 
+app.use(express.static("public"));
 app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/views/partials", function (err) {
-  if (err) {
-    console.error("Error loading partials:", err);
-  }
+
+hbs.registerPartials(__dirname + "/views/partials", (err) => {
+  if (err) console.error("Error loading partials:", err);
 });
 
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.render("home", {
     nombre: "Agustin",
     titulo: "PRUEBA HBS",
   });
 });
-app.get("/elements", function (req, res) {
+
+app.get("/elements", (req, res) => {
   res.render("elements", {
     nombre: "Agustin",
     titulo: "PRUEBA HBS",
   });
 });
-app.get("/generic", function (req, res) {
+
+app.get("/generic", (req, res) => {
   res.render("generic", {
     nombre: "Agustin",
     titulo: "PRUEBA HBS",
   });
 });
 
-
-
-app.get("*", function (req, res) {
+app.get("*", (req, res) => {
   res.sendFile(__dirname + "/public/back/404.html");
 });
 
-
-app.listen(3000, () => console.log("Server ready on port 3000."));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 module.exports = app;
