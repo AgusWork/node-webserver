@@ -36,7 +36,7 @@ app.get("/generic", function (req, res) {
     res.sendFile( __dirname + "/public/404.html")
   })
   
-app.listen(port, () => {
+app.listen(port,  '0.0.0.0', () => {
     console.log(`Example app listenting at http://localhost:${port}/`)
 })
 
