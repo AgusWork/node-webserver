@@ -36,8 +36,4 @@ app.get("*", function (req, res) {
   res.sendFile(__dirname + "/public/back/404.html");
 });
 
-app.listen(port,  () => {
-  console.log(`Example app listenting at http://localhost:${port}/`);
-});
-
 module.exports = app;
