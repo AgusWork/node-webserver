@@ -1,7 +1,42 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
+const hbs = require("hbs");
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.use(express.static("public"));
+
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials", function (err) {
+  if (err) {
+    console.error("Error loading partials:", err);
+  }
+});
+
+app.get("/", function (req, res) {
+  res.render("home", {
+    nombre: "Agustin",
+    titulo: "PRUEBA HBS",
+  });
+});
+app.get("/elements", function (req, res) {
+  res.render("elements", {
+    nombre: "Agustin",
+    titulo: "PRUEBA HBS",
+  });
+});
+app.get("/generic", function (req, res) {
+  res.render("generic", {
+    nombre: "Agustin",
+    titulo: "PRUEBA HBS",
+  });
+});
+
+
+
+app.get("*", function (req, res) {
+  res.sendFile(__dirname + "/public/back/404.html");
+});
+
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
 
