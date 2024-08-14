@@ -35,7 +35,7 @@ app.get("/generic", function (req, res) {
   })
 
   app.get('*', function (req, res) {
-    res.sendFile( __dirname + "/public/404.html")
+    res.sendFile( __dirname + "/public/back/404.html")
   })
   
 app.listen(port,  '0.0.0.0', () => {
