@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
 const hbs = require("hbs");
 
 app.use(express.static("public"));
@@ -32,8 +31,11 @@ app.get("/generic", function (req, res) {
   });
 });
 
+
+
 app.get("*", function (req, res) {
   res.sendFile(__dirname + "/public/back/404.html");
 });
+
 
 module.exports = app;
