@@ -1,16 +1,15 @@
 {
-  "builds": [
-    {
-      "src": "./app-prueba.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
-  "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
-}
+    "builds": [
+      {
+        "src": "app.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "app.js"
+      }
+    ],
+    "version": 2
+  }
